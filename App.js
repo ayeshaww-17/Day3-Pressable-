@@ -1,20 +1,51 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Pressable, SafeAreaView } from 'react-native';
 
-export default function App() {
+       const App=()=> {
+        const press=(presstype)=>{
+          console.log(presstype);
+        }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView>
+    <View>
+      <Text style={styles.title}>PressAble</Text>
+      <Pressable style={styles.press}
+      onPress={() => press("onPress")} 
+      onPressIn={() => press("onPressIn")} 
+      onPressOut={() => press("onPressOut")} 
+      onLongPress={() => press("onLongPress")}
+      /*style={({ pressed }) => [
+        {
+          opacity: pressed
+            ? 0.5
+            : 1
+        }
+      ]}*/>
+        <Text style={styles.text}>Press Me</Text>
+      </Pressable>
+    </View></SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+ title:{
+  fontSize:30,
+  fontFamily:'bold',
+  textAlign:'center',
+  marginTop:20,
+ },
+ press:{
+  padding:20,
+  opacity:0.5,
+  textAlign:'center',
+  backgroundColor:'#98B82A',
+  borderRadius: 50,
+  marginTop:200,
+ },
+ text:{
+  textAlign:'center',
+  color:'#330000	',
+  fontSize:20,
+ },
 });
+export default App;
